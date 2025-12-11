@@ -17,15 +17,15 @@ const Header = () => {
     return (
         <header className="py-4">
             <div className="flex justify-between items-center">
-                <h1 className="text-3xl font-bold text-primary-foreground">
+                <h1 className="text-3xl font-bold foreground">
                     Samuel Aubine Bourdon
                 </h1>
                 <div className="hidden xl:block">
                     <NavigationMenu>
-                        <NavigationMenuList>
+                        <NavigationMenuList className="gap-4">
                             {links.map((link, index) => (
-                                <NavigationMenuItem key={index} className='m-0.5'>
-                                    <NavigationMenuLink asChild className='text-3xl '>
+                                <NavigationMenuItem key={index} className=''>
+                                    <NavigationMenuLink asChild className= {navigationMenuTriggerStyle()}>
                                         <Link href={link.href} className=''> 
                                             {link.label}
                                         </Link>
@@ -50,7 +50,7 @@ const Header = () => {
                                     <Link
                                         key={index}
                                         href={link.href}
-                                        className="text-2xl hover:underline underline-offset-4 text-center "
+                                        className="text-2xl hover:underline hover:opacity-50 underline-offset-4 text-center "
                                     >
                                         {link.label}
                                     </Link>
