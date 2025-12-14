@@ -14,12 +14,14 @@ export default function Home() {
       <SpacingY size="md" />
       <Presentation />
       <SpacingY size="md" />
-      <h1 className="text-4xl font-bold mb-1.5 text-center font-poppins">Compétences</h1>
+      <h2 className="text-4xl font-bold mb-1.5 text-center font-poppins">Compétences</h2>
       <SpacingY size="2xs" />
       <GridComponent className="md:w-xl mx-auto" />
       <SpacingY size="2xs" />
       <GridOutils className="md:w-xl mx-auto" />
-      <SpacingY size="md" />
+      <SpacingY size="xs" />
+      <h2 className="text-4xl font-bold mb-1.5 text-center font-poppins">Projets</h2>
+      <SpacingY size="2xs" />
       <CarouselProjet />
     </main>
   );

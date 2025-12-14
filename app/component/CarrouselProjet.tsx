@@ -14,11 +14,11 @@ import { Button } from '@/components/ui/button'
 
 function CarrouselProjet() {
     const projet = [
-        { title: "Symfony", image: "assets/projet1.png", link: "#" },
-        { title: "Portfolio", image: "assets/projet2.png", link: "#" },
-        { title: "Lead&Nous", image: "assets/projet3.png", link: "#" },
-        { title: "BikeStore", image: "assets/projet4.png", link: "#" },
-        { title: "Theme Flutter", image: "assets/projet5.png", link: "#" },
+        { title: "Night City Cyberpunk", image: "assets/symfony.svg", link: "#" },
+        { title: "Portfolio", image: "assets/nextjs.svg", link: "#" },
+        { title: "Lead&Nous", image: "assets/wordpress.svg", link: "#" },
+        { title: "BikeStore", image: "assets/php.svg", link: "#" },
+        { title: "Stage au GREYC", image: "assets/projet/stage4.svg", link: "#" },
     ]
     const [api, setApi] = useState<CarouselApi | undefined>()
     const [current, setCurrent] = useState(0)
@@ -32,50 +32,61 @@ function CarrouselProjet() {
             setCurrent(api.selectedScrollSnap())
         })
     }, [api])
+
     const scrollTo = (index: number) => {
         if (api) {
             api.scrollTo(index)
         }
     }
+
     return (
         <Carousel
             setApi={setApi}
-            opts={{
-                align: "center",
-                loop: true,
-            }}
-            className="w-full m-auto  "
-
+            opts={{ align: "center", loop: true }}
+            className="w-full m-auto"
         >
-            <CarouselContent className="">
+            <CarouselContent>
                 {projet.map((projet, index) => {
                     const isCenter = index === current
                     return (
-                        <CarouselItem key={index} className=" lg:basis-1/3 h-full cursor-pointer" onClick={() => scrollTo(index)}>
-                            <div className={`p-1 transition-all duration-300 ${isCenter ? "p-1" : "p-8"} `
-                            }>
+                        <CarouselItem
+                            key={index}
+                            className="lg:basis-1/3 cursor-pointer"
+                            onClick={() => scrollTo(index)}
+                        >
+                            <div
+                                className={`transition-all duration-300 ${isCenter ? "p-1" : "p-8"}`}
+                            >
                                 <Card>
-                                    <CardContent className="flex flex-col items-center aspect-square ">
-                                        <img
-                                            src={projet.image}
-                                            alt={projet.title}
-                                            className="object-cover rounded-md"
-                                        />
-                                        <h4>{projet.title}</h4>
-                                        <Button variant="link" className="mt-2 p-0 underline"  >
-                                            <Link href={projet.link}>
-                                                Voir le projet
-                                            </Link>
-                                        </Button>
+                                    <CardContent className="flex flex-col p-0 h-[420px]">
+                                        {/* Image : 80% */}
+                                        <div className="flex-[8] w-full overflow-hidden">
+                                            <img
+                                                src={projet.image}
+                                                alt={projet.title}
+                                                className=" rounded-t-md object-fill h-full w-full "
+                                            />
+                                        </div>
+
+                                        {/* Contenu : 20% */}
+                                        <div className="flex-[2] flex flex-col justify-center items-center gap-2 px-4">
+                                            <h4 className="font-semibold text-center">
+                                                {projet.title}
+                                            </h4>
+                                            <Button variant="link" className="p-0 underline">
+                                                <Link href={projet.link}>Voir le projet</Link>
+                                            </Button>
+                                        </div>
                                     </CardContent>
                                 </Card>
                             </div>
                         </CarouselItem>
                     )
                 })}
-            </CarouselContent >
-            <CarouselPrevious className='hidden md:flex' />
-            <CarouselNext className='hidden md:flex' />
+            </CarouselContent>
+            <CarouselPrevious className="hidden md:flex" />
+            <CarouselNext className="hidden md:flex" />
+
             <div className="flex gap-2 justify-center mt-4">
                 {Array.from({ length: 5 }).map((_, index) => (
                     <button
