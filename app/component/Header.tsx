@@ -4,6 +4,7 @@ import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/s
 import { Button } from "@/components/ui/button"
 import { Menu } from "lucide-react"
 import Link from 'next/link'
+import GlitchTitle from './glitchTitle'
 import { cn } from "@/lib/utils"
 
 const Header = () => {
@@ -15,11 +16,9 @@ const Header = () => {
     ]
 
     return (
-        <header className="py-4">
+        <header className="py-4 sticky top-0 z-50 bg-background/80 backdrop-blur-sm ">
             <div className="flex justify-between items-center">
-                <h1 className="text-3xl font-bold foreground">
-                    Samuel Aubine Bourdon
-                </h1>
+                <GlitchTitle  $title="Samuel Aubine Bourdon" />
                 <div className="hidden xl:block">
                     <NavigationMenu>
                         <NavigationMenuList className="gap-4">
@@ -35,7 +34,6 @@ const Header = () => {
                         </NavigationMenuList>
                     </NavigationMenu>
                 </div>
-
                 <div className="xl:hidden">
                     <Sheet>
                         <SheetTrigger asChild>
